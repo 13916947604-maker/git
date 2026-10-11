@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lecture Core Revision"
+  short_description: "课件与字幕融合复习：按主题编号，保留时间戳，术语中英双语，英文短句解释"
+  default_prompt: "Use $lecture-core-revision to turn these lecture slides and timestamped captions into compact bilingual core revision notes."
