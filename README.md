@@ -1,35 +1,46 @@
 # Lecture Core Revision
 
-将大学课件和带时间戳的讲课字幕整理成简洁、可读的复习笔记。
+A bilingual study-note Skill for turning university lecture slides and matching timestamped transcripts or captions into compact, source-grounded core revision notes. It uses the open `SKILL.md` Agent Skills format shared by Claude and Codex.
 
-## 特点
+## What it does
 
-- 按原讲课顺序整理，保留页码、时间戳、机制、例子和重要数值。
-- 英文解释为主，关键科学术语附中文。
-- 区分课件、讲师字幕和 AI 补充解释，注明缺失来源。
-- 最后提供 Exam / revision focus。
-- 可选 Notion 同步：需要使用者连接 Notion，并提供目标目录。
+- Reviews the supplied slide deck and matching transcript or captions, and reports missing sources or partial transcript coverage.
+- Organises concepts by question and dependency while preserving original page references, verified timestamps, mechanisms, examples, values, conditions, and qualifications.
+- Writes in approximately 60% English and 40% Chinese, with an abstract, numbered topics, and a compact bilingual vocabulary table.
+- Keeps notes grounded in the supplied sources and flags caption errors or unresolved disagreements.
+- Makes Notion saving optional and destination-specific; the public Skill contains no private page address or credentials.
 
-## 安装到 Codex
+## Use with Claude.ai
 
-下载本仓库 ZIP 并解压，将整个 `lecture-core-revision` 文件夹复制到
-`~/.codex/skills/`，然后重启 Codex。
+1. Download [lecture-core-revision-claude.zip](lecture-core-revision-claude.zip).
+2. In Claude, open **Customize → Skills**, choose **Create skill → Upload a skill**, and select the ZIP file.
+3. Enable the Skill, start a chat, and provide the lecture slides plus the matching transcript or captions.
 
-也可以向 Codex 提出：
+Claude's account may require **Code execution and file creation** to be enabled for Skills.
 
-> 请使用 skill-installer，从 13916947604-maker/git 仓库安装 lecture-core-revision 目录中的 Skill。
+## Use with Claude Code
 
-## 使用示例
+Copy `SKILL.md` into the personal Skills folder (or into `.claude/skills/lecture-core-revision/` for one project):
 
-上传匹配的课件和字幕后输入：
+```sh
+mkdir -p ~/.claude/skills/lecture-core-revision
+cp SKILL.md ~/.claude/skills/lecture-core-revision/SKILL.md
+```
 
-> 使用 $lecture-core-revision 整理这节课的核心复习笔记。保留原始页码和时间戳，英文解释为主，关键术语附中文。
+Start a new Claude Code session after installing or updating a Skill.
 
-如需 Notion 同步，明确提出同步要求，并提供你有写入权限的目录页面。
+## Use with Codex
 
-## 文件
+Copy `SKILL.md` into `~/.codex/skills/lecture-core-revision/`. The optional `openai.yaml` file provides Codex-specific interface metadata; Claude reads the `SKILL.md` instructions.
 
-- `lecture-core-revision/SKILL.md`：核心工作指令。
-- `lecture-core-revision/agents/openai.yaml`：Codex 界面元数据。
+## Example request
 
-本仓库不包含课程课件、字幕、笔记、登录凭据或私人 Notion 页面地址。
+> Use Lecture Core Revision to make bilingual core revision notes from these lecture slides and matching captions. Keep the original slide numbers and verified timestamps, explain the mechanisms, and identify any gaps in source coverage.
+
+## Repository contents
+
+- `SKILL.md` — shared Claude/Codex Skill instructions.
+- `lecture-core-revision-claude.zip` — ready-to-upload Claude skill bundle.
+- `openai.yaml` — optional Codex interface metadata.
+
+This repository contains no course slides, captions, student notes, login credentials, or private Notion destination.
